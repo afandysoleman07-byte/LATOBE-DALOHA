@@ -228,7 +228,7 @@
                 <!-- Kondisi -->
                 <div>
                     <label class="text-[10px] text-slate-400 ml-1 font-bold uppercase">Situasi Lapangan</label>
-                    <textarea id="catatan" rows="2" placeholder="Contoh: Situasi aman / Situasi tidak aman" 
+                    <textarea id="catatan" rows="2" placeholder="Contoh: Situasi Aman Kondusif / Situasi Tidak Aman" 
                         class="w-full bg-slate-900 border border-slate-700 rounded-xl p-3 outline-none focus:ring-2 focus:ring-red-600"></textarea>
                 </div>
                     <!-- Tactical Cam -->
@@ -335,7 +335,12 @@
                           `------------------------------------%0A` +
                           `_Dikirim melalui Sistem Digital Lapas Tobelo_`;
 
-            window.open(`https://wa.me/6282151309630?text=${pesan}`, '_blank');
+            // SOLUSI UNTUK GRUP: 
+            // Menggunakan 'api.whatsapp.com/send' tanpa nomor tujuan agar browser/aplikasi 
+            // meminta pengguna memilih tujuan (kontak/grup) secara manual.
+            const urlGrup = `https://api.whatsapp.com/send?text=${pesan}`;
+
+            window.open(urlGrup, '_blank');
         }
 
        function buatPDF() {
@@ -347,6 +352,10 @@
             const jam = document.getElementById('txt-jam').innerText;
             const tgl = document.getElementById('txt-tgl').innerText;
             const lokasi = document.getElementById('txt-lokasi').innerText;
+
+            // DATA KEPALA LAPAS (Silakan sesuaikan Nama dan NIP)
+            const namaKalapas = "DONNI ISA DERMAWAN,A.Md.IP.,S.H.<M.Si>"; 
+            const nipKalapas = "198005162000121001";
             
             // Ambil elemen foto preview
             const imgPreview = document.getElementById('imgPreview');
@@ -371,10 +380,10 @@
             doc.setFillColor(0, 0, 0);
             doc.rect(7, 7, pageWidth - 14, 35, 'F');
             doc.setTextColor(255, 255, 255);
-            doc.setFontSize(18);
-            doc.text("SI-KOBAR", pageWidth / 2, 22, { align: "center" });
-            doc.setFontSize(10);
-            doc.text("LEMBAGA PEMASYARAKATAN KELAS IIB TOBELO", pageWidth / 2, 30, { align: "center" });
+            doc.setFontSize(20);
+            doc.text("ATENSI PIMPINAN", pageWidth / 2, 22, { align: "center" });
+            doc.setFontSize(16);
+            doc.text("KONTROK KELILING BARCODE LAPAS KELAS IIB TOBELO", pageWidth / 2, 30, { align: "center" });
 
             // --- 3. BODY DATA ---
             doc.setTextColor(0, 0, 0);
@@ -436,6 +445,25 @@
                 doc.setTextColor(150, 150, 150);
                 doc.text("* Tidak ada lampiran foto.", startX, y);
             }
+
+            const signX = pageWidth - 90; // Posisi di sisi kanan
+            doc.setTextColor(0, 0, 0);
+            doc.setFont("helvetica", "normal");
+            doc.text("Mengetahui,", signX, y);
+            y += 5;
+            doc.text("Kepala Lapas Tobelo,", signX, y);
+
+            y += 25; // Ruang tanda tangan
+            doc.setFont("helvetica", "bold");
+            doc.text(namaKalapas, signX, y);
+
+            // Garis bawah nama
+             doc.setLineWidth(0.5);
+            doc.line(signX, y + 1, signX + 65, y + 1);
+    
+             y += 6;
+            doc.setFont("helvetica", "normal");
+            doc.text("NIP. " + nipKalapas, signX, y);
 
             // --- 6. FOOTER ---
             const footerY = pageHeight - 20;
