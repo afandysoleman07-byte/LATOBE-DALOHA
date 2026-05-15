@@ -145,7 +145,7 @@
                         <i class="fas fa-tower-broadcast text-5xl text-red-600 animate-bounce"></i>
                     </div>
                     <h2 class="text-4xl font-black text-white tracking-tighter uppercase italic">Lapas Tobelo</h2>
-                    <div class="hazard-stripe h-1 w-48 mt-2 opacity-50"></div>
+                    <div class="hazard-stripe h-1 w-48 mt-2 opacity-90"></div>
                     <p class="mt-3 text-[12px] text-red-500 font-black uppercase tracking-[0.5em]">Command & Control</p>
                 </div>
             </div>
@@ -179,7 +179,7 @@
                     <i class="fas fa-satellite text-slate-700 animate-pulse"></i>
                 </div>
 
-                <!-- Form Input -->
+                 <!-- Form Input -->
             <div class="space-y-4">
                 <!-- Regu Pengamanan -->
                 <div>
@@ -212,16 +212,24 @@
                         <select id="area" class="w-full bg-slate-900 border border-slate-700 rounded-xl p-3 pl-10 appearance-none focus:ring-2 focus:ring-red-600 outline-none">
                             <option value="BRANDGANG SELATAN">BRANDGANG SELATAN</option>
                             <option value="BRANDGANG UTARA">BRANDGANG UTARA</option>
+                            <option value="BLOK HUNIAN">BLOK HUNIAN</option>
                         </select>
                         <i class="fas fa-road absolute left-3 top-4 text-slate-500"></i>
                     </div>
                 </div>
-               
+              
+                <!-- Jumlah WBP -->
+                <div>
+                    <label class="text-[10px] text-slate-400 ml-1 font-bold uppercase">Jumlah WBP</label>
+                    <textarea id="jumlah_wbp" rows="2" placeholder="Contoh: 150 Orang" 
+                        class="w-full bg-slate-900 border border-slate-700 rounded-xl p-3 outline-none focus:ring-2 focus:ring-red-600"></textarea>
+                </div>
+
                 <!-- Kondisi -->
                 <div>
                     <label class="text-[10px] text-slate-400 ml-1 font-bold uppercase">Situasi Lapangan</label>
-                    <textarea id="catatan" rows="2" placeholder="Contoh: Tembok & kawat berduri dalam keadaan baik." 
-                              class="w-full bg-slate-900 border border-slate-700 rounded-xl p-3 outline-none focus:ring-2 focus:ring-red-600"></textarea>
+                    <textarea id="catatan" rows="2" placeholder="Contoh: Situasi aman / Situasi tidak aman" 
+                        class="w-full bg-slate-900 border border-slate-700 rounded-xl p-3 outline-none focus:ring-2 focus:ring-red-600"></textarea>
                 </div>
                     <!-- Tactical Cam -->
                     <div class="bg-[#111] p-4 border-2 border-dashed border-[#333] rounded-xl group hover:border-red-600 transition-colors">
@@ -236,7 +244,7 @@
                                 </div>
                                 <div>
                                     <p class="text-xs font-black uppercase text-white">BUKA KAMERA</p>
-                                    <p id="statusFoto" class="text-[12px] text-slate-600 uppercase font-bold">Image Pending</p>
+                                    <p id="statusFoto" class="text-[12px] text-slate-600 uppercase font-bold">AMBIL GAMBAR</p>
                                 </div>
                             </div>
                             <input type="file" id="fotoInput" accept="image/*" capture="environment" class="hidden" onchange="previewFoto(event)">
@@ -305,6 +313,7 @@
             const nama = document.getElementById('nama').value;
             const rupam = document.getElementById('rupam').value;
             const area = document.getElementById('area').value;
+            const jumlahWbp = document.getElementById('jumlah_wbp').value || "-";
             const catatan = document.getElementById('catatan').value || "STATUS: SECURE";
             const jam = document.getElementById('txt-jam').innerText;
             const tgl = document.getElementById('txt-tgl').innerText;
@@ -315,8 +324,9 @@
              const pesan = `*LAPORAN SI-KOBAR LATOBE*%0A` +
                           `------------------------------------%0A` +
                           `🛡️ *Regu Pengamanan :* ${rupam}%0A` +
-                          `👤 *Petugas Jaga :* ${nama}%0A` +
+                          `👤 *Nama Petugas :* ${nama}%0A` +
                           `📍 *Area Kontrol :* ${area}%0A` +
+                          `👥 *Jumlah WBP :* ${jumlahWbp}%0A` +
                           `📅 *Tanggal :* ${tgl}%0A` +
                           `⏰ *Waktu :* ${jam}%0A` +
                           `🌎 *Titik GPS :* %0Ahttps://www.google.com/maps?q=${lokasi}%0A` +
@@ -332,6 +342,7 @@
             const nama = document.getElementById('nama').value;
             const rupam = document.getElementById('rupam').value;
             const area = document.getElementById('area').value;
+            const jumlahWbp = document.getElementById('jumlah_wbp').value || "-";
             const catatan = document.getElementById('catatan').value || "AMAN TERKENDALI";
             const jam = document.getElementById('txt-jam').innerText;
             const tgl = document.getElementById('txt-tgl').innerText;
@@ -385,6 +396,7 @@
             addRow("Regu Pengamanan", rupam);
             addRow("Petugas Jaga", nama);
             addRow("Area Kontrol", area);
+            addRow("Jumlah WBP", jumlahWbp);
             addRow("Waktu", jam);
             addRow("Tanggal Laporan", tgl);
             addRow("Koordinat GPS", lokasi);
