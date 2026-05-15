@@ -179,40 +179,50 @@
                     <i class="fas fa-satellite text-slate-700 animate-pulse"></i>
                 </div>
 
-                <!-- Data Inputs -->
-                <div class="space-y-4">
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div>
-                            <label class="text-[12px] text-slate-500 font-black uppercase mb-2 block tracking-widest">Unit / Regu</label>
-                            <select id="rupam" class="w-full p-3 text-xs uppercase font-bold rounded-lg focus:outline-none">
-                                <option value="RUPAM I">RUPAM I</option>
-                                <option value="RUPAM II">RUPAM II</option>
-                                <option value="RUPAM III">RUPAM III</option>
-                                <option value="RUPAM IV">RUPAM IV</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label class="text-[12px] text-slate-500 font-black uppercase mb-2 block tracking-widest">NAMA PETUGAS</label>
-                            <input type="text" id="nama" placeholder="Maukan Nama Lengkap.." 
-                                   class="w-full p-3 text-xs rounded-lg focus:outline-none placeholder:text-slate-400">
-                        </div>
+                <!-- Form Input -->
+            <div class="space-y-4">
+                <!-- Regu Pengamanan -->
+                <div>
+                    <label class="text-[10px] text-slate-400 ml-1 font-bold uppercase">Regu Pengamanan</label>
+                    <div class="relative mt-1">
+                        <select id="rupam" class="w-full bg-slate-900 border border-slate-700 rounded-xl p-3 pl-10 appearance-none focus:ring-2 focus:ring-red-600 outline-none">
+                            <option value="RUPAM I">RUPAM I</option>
+                            <option value="RUPAM II">RUPAM II</option>
+                            <option value="RUPAM III">RUPAM III</option>
+                            <option value="RUPAM IV">RUPAM IV</option>
+                        </select>
+                        <i class="fas fa-users absolute left-3 top-4 text-slate-500"></i>
                     </div>
+                </div>
 
-                    <div>
-                        <label class="text-[12px] text-slate-500 font-black uppercase mb-2 block tracking-widest">AREA KONTROL</label>
-                        <select id="area" class="w-full p-3 text-xs uppercase font-bold rounded-lg focus:outline-none">
-                            <option value="BLOK HUNIAN">BLOK HUNIAN</option>
+                <!-- Nama Petugas -->
+                <div>
+                    <label class="text-[10px] text-slate-400 ml-1 font-bold uppercase">Nama Petugas</label>
+                    <div class="relative mt-1">
+                        <input type="text" id="nama" placeholder="Ketik nama lengkap..." 
+                               class="w-full bg-slate-900 border border-slate-700 rounded-xl p-3 pl-10 focus:ring-2 focus:ring-red-600 outline-none transition">
+                        <i class="fas fa-user-shield absolute left-3 top-4 text-slate-500"></i>
+                    </div>
+                </div>
+
+                <!-- Brandgang Area -->
+                <div>
+                    <label class="text-[10px] text-slate-400 ml-1 font-bold uppercase">AREA KONTROL</label>
+                    <div class="relative mt-1">
+                        <select id="area" class="w-full bg-slate-900 border border-slate-700 rounded-xl p-3 pl-10 appearance-none focus:ring-2 focus:ring-red-600 outline-none">
                             <option value="BRANDGANG SELATAN">BRANDGANG SELATAN</option>
                             <option value="BRANDGANG UTARA">BRANDGANG UTARA</option>
                         </select>
+                        <i class="fas fa-road absolute left-3 top-4 text-slate-500"></i>
                     </div>
-
-                    <div>
-                        <label class="text-[12px] text-slate-500 font-black uppercase mb-2 block tracking-widest">SITUASI</label>
-                        <textarea id="catatan" rows="3" placeholder="CONTOH : AMAN KONDUSIF..." 
-                                  class="w-full p-3 text-xs rounded-lg focus:outline-none resize-none placeholder:text-slate-400"></textarea>
-                    </div>
-
+                </div>
+               
+                <!-- Kondisi -->
+                <div>
+                    <label class="text-[10px] text-slate-400 ml-1 font-bold uppercase">Situasi Lapangan</label>
+                    <textarea id="catatan" rows="2" placeholder="Contoh: Tembok & kawat berduri dalam keadaan baik." 
+                              class="w-full bg-slate-900 border border-slate-700 rounded-xl p-3 outline-none focus:ring-2 focus:ring-red-600"></textarea>
+                </div>
                     <!-- Tactical Cam -->
                     <div class="bg-[#111] p-4 border-2 border-dashed border-[#333] rounded-xl group hover:border-red-600 transition-colors">
                         <div class="flex items-center justify-between">
