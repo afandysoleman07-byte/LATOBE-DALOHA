@@ -318,7 +318,7 @@
             window.open(`https://wa.me/6282151309630?text=${pesan}`, '_blank');
         }
 
-        function buatPDF() {
+       function buatPDF() {
             const nama = document.getElementById('nama').value;
             const rupam = document.getElementById('rupam').value;
             const area = document.getElementById('area').value;
@@ -326,6 +326,10 @@
             const jam = document.getElementById('txt-jam').innerText;
             const tgl = document.getElementById('txt-tgl').innerText;
             const lokasi = document.getElementById('txt-lokasi').innerText;
+            
+            // Ambil elemen foto preview
+            const imgPreview = document.getElementById('imgPreview');
+            const hasImage = !imgPreview.classList.contains('hidden') && imgPreview.src;
 
             if (!nama) { 
                 alert("ACCESS DENIED: Masukkan Nama Petugas untuk otentikasi PDF!"); 
@@ -347,8 +351,8 @@
             doc.rect(7, 7, pageWidth - 14, 35, 'F');
             doc.setTextColor(255, 255, 255);
             doc.setFontSize(18);
-            doc.text("SI-KOBAR", pageWidth / 2, 22, { align: "center" });
-            doc.setFontSize(12);
+            doc.text("SI-KOBAR TACTICAL", pageWidth / 2, 22, { align: "center" });
+            doc.setFontSize(10);
             doc.text("LEMBAGA PEMASYARAKATAN KELAS IIB TOBELO", pageWidth / 2, 30, { align: "center" });
 
             // --- 3. BODY DATA ---
@@ -375,6 +379,7 @@
             addRow("Tanggal Laporan", tgl);
             addRow("Koordinat GPS", lokasi);
 
+            // --- 4. HASIL PANTAUAN (TEXT) ---
             y += 5;
             doc.setFont("helvetica", "bold");
             doc.setFillColor(185, 28, 28);
@@ -387,16 +392,38 @@
             doc.setFont("helvetica", "italic");
             const splitCatatan = doc.splitTextToSize(catatan, 160);
             doc.text(splitCatatan, startX, y);
+            y += (splitCatatan.length * 7) + 10;
 
-            // Footer
-            const footerY = pageHeight - 30;
+            // --- 5. LAMPIRAN FOTO (VISUAL EVIDENCE) ---
+            if (hasImage) {
+                try {
+                    // Label Foto
+                    doc.setFont("helvetica", "bold");
+                    doc.setTextColor(185, 28, 28);
+                    doc.text("DOKUMENTASI VISUAL:", startX, y);
+                    y += 5;
+                    
+                    // Tambahkan Gambar (Format: src_data, tipe, x, y, width, height)
+                    // Ukuran diset 80mm x 60mm agar proporsional
+                    doc.addImage(imgPreview.src, 'JPEG', startX, y, 80, 60);
+                } catch (e) {
+                    console.error("Gagal menambahkan gambar ke PDF:", e);
+                }
+            } else {
+                doc.setFontSize(8);
+                doc.setTextColor(150, 150, 150);
+                doc.text("* Tidak ada lampiran foto.", startX, y);
+            }
+
+            // --- 6. FOOTER ---
+            const footerY = pageHeight - 20;
             doc.setFontSize(7);
             doc.setTextColor(100, 100, 100);
-            doc.text("Dokumen ini dihasilkan secara otomatis oleh sistem SI-KOBAR DALOHA.", pageWidth / 2, footerY + 5, { align: "center" });
+            doc.text("Digital Signature: SI-KOBAR-DALOHA-TACTICAL-SYSTEM", pageWidth / 2, footerY, { align: "center" });
 
             const cleanName = nama.replace(/\s+/g, '_').toUpperCase();
             doc.save(`LAPORAN_OPS_${cleanName}.pdf`);
-            alert("SYSTEM: PDF Tactic Report telah berhasil diunduh.");
+            alert("SYSTEM: PDF dengan lampiran foto telah berhasil dibuat.");
         }
     </script>
 </body>
