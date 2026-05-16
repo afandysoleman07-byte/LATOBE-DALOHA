@@ -15,10 +15,9 @@
             --dark-steel: #0a0a0c;
             --metal-panel: #1a1a1e;
         }
-
         body { 
-            font-family: 'Orbitron', sans-serif; 
-            background: radial-gradient(circle at center, #1a0505 0%, #000000 100%);
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background: radial-gradient(circle at center, #151c2c 0%, #080b11 100%);
             overflow-x: hidden;
         }
         
@@ -146,7 +145,7 @@
                     </div>
                     <h2 class="text-4xl font-black text-white tracking-tighter uppercase italic">Lapas Tobelo</h2>
                     <div class="hazard-stripe h-1 w-48 mt-2 opacity-90"></div>
-                    <p class="mt-3 text-[12px] text-red-500 font-black uppercase tracking-[0.5em]">Command & Control</p>
+                    <p class="mt-3 text-[14px] text-red-500 font-black uppercase tracking-[0.5em]">Command & Control</p>
                 </div>
             </div>
 
@@ -155,11 +154,11 @@
                 
                 <!-- Telemetry Grid -->
                 <div class="grid grid-cols-2 gap-4">
-                    <div class="bg-[#050505] p-4 border border-[#2a2a30] rounded-lg">
+                    <div class="bg-[#050505] p-4 border border-[#2a2a30] rounded-lg text-center">
                         <p class="text-[12px] text-slate-600 font-bold uppercase mb-1">Time</p>
                         <p id="txt-jam" class="mono text-2xl text-red-600 font-black">00:00:00</p>
                     </div>
-                    <div class="bg-[#050505] p-4 border border-[#2a2a30] rounded-lg">
+                    <div class="bg-[#050505] p-4 border border-[#2a2a30] rounded-lg text-center">
                         <p class="text-[12px] text-slate-600 font-bold uppercase mb-1">Calender ID</p>
                         <p id="txt-tgl" class="text-xs font-bold text-slate-400">-- --- ----</p>
                     </div>
@@ -183,7 +182,7 @@
             <div class="space-y-4">
                 <!-- Regu Pengamanan -->
                 <div>
-                    <label class="text-[10px] text-slate-400 ml-1 font-bold uppercase">Regu Pengamanan</label>
+                    <label class="text-[12px] text-slate-400 ml-1 font-bold uppercase">Regu Pengamanan</label>
                     <div class="relative mt-1">
                         <select id="rupam" class="w-full bg-slate-900 border border-slate-700 rounded-xl p-3 pl-10 appearance-none focus:ring-2 focus:ring-red-600 outline-none">
                             <option value="RUPAM I">RUPAM I</option>
@@ -197,7 +196,7 @@
 
                 <!-- Nama Petugas -->
                 <div>
-                    <label class="text-[10px] text-slate-400 ml-1 font-bold uppercase">Nama Petugas</label>
+                    <label class="text-[12px] text-slate-400 ml-1 font-bold uppercase">Nama Petugas</label>
                     <div class="relative mt-1">
                         <input type="text" id="nama" placeholder="Ketik nama lengkap..." 
                                class="w-full bg-slate-900 border border-slate-700 rounded-xl p-3 pl-10 focus:ring-2 focus:ring-red-600 outline-none transition">
@@ -207,12 +206,19 @@
 
                 <!-- Brandgang Area -->
                 <div>
-                    <label class="text-[10px] text-slate-400 ml-1 font-bold uppercase">AREA KONTROL</label>
+                    <label class="text-[12px] text-slate-400 ml-1 font-bold uppercase">AREA KONTROL</label>
                     <div class="relative mt-1">
                         <select id="area" class="w-full bg-slate-900 border border-slate-700 rounded-xl p-3 pl-10 appearance-none focus:ring-2 focus:ring-red-600 outline-none">
+                            <option value="KLINIK">KLINIK</option>
+                            <option value="KANTIN">KANTIN</option>
+                            <option value="BLOK ">BLOK MAPENALING</option>
+                            <option value="BLOK HUNIAN">BLOK A</option>
+                            <option value="BLOK HUNIAN">BLOK B</option>
+                            <option value="BLOK HUNIAN">BLOK C</option>
+                            <option value="BRANDGANG SELATAN">BLOK D</option>
+                            <option value="BRANDGANG UTARA">BLOK WANITA</option>
                             <option value="BRANDGANG SELATAN">BRANDGANG SELATAN</option>
                             <option value="BRANDGANG UTARA">BRANDGANG UTARA</option>
-                            <option value="BLOK HUNIAN">BLOK HUNIAN</option>
                         </select>
                         <i class="fas fa-road absolute left-3 top-4 text-slate-500"></i>
                     </div>
@@ -220,34 +226,39 @@
               
                 <!-- Jumlah WBP -->
                 <div>
-                    <label class="text-[10px] text-slate-400 ml-1 font-bold uppercase">Jumlah WBP</label>
-                    <textarea id="jumlah_wbp" rows="2" placeholder="Contoh: 150 Orang" 
+                    <label class="text-[12px] text-slate-400 ml-1 font-bold uppercase">Jumlah WBP</label>
+                    <textarea id="jumlah_wbp" rows="2" placeholder="Contoh: 150 ORANG KHUSUS BLOK HUNIAN" 
                         class="w-full bg-slate-900 border border-slate-700 rounded-xl p-3 outline-none focus:ring-2 focus:ring-red-600"></textarea>
                 </div>
 
                 <!-- Kondisi -->
                 <div>
-                    <label class="text-[10px] text-slate-400 ml-1 font-bold uppercase">Situasi Lapangan</label>
+                    <label class="text-[12px] text-slate-400 ml-1 font-bold uppercase">Situasi Lapangan</label>
                     <textarea id="catatan" rows="2" placeholder="Contoh: Situasi Aman Kondusif / Situasi Tidak Aman" 
                         class="w-full bg-slate-900 border border-slate-700 rounded-xl p-3 outline-none focus:ring-2 focus:ring-red-600"></textarea>
                 </div>
                     <!-- Tactical Cam -->
-                    <div class="bg-[#111] p-4 border-2 border-dashed border-[#333] rounded-xl group hover:border-red-600 transition-colors">
-                        <div class="flex items-center justify-between">
-                            <div class="flex items-center space-x-4">
-                                <button onclick="document.getElementById('fotoInput').click()" 
-                                        class="w-14 h-14 bg-red-600 text-white rounded-lg hover:bg-red-700 transition flex items-center justify-center shadow-lg shadow-red-900/40">
-                                    <i class="fas fa-camera text-xl"></i>
+                    <div class="bg-[#080b11]/50 p-4 border border-dashed border-white/10 rounded-xl space-y-3">
+                        <p class="text-xs font-bold text-white tracking-wide uppercase text-center">BUKA KAMERA</p>
+                        
+                        <div class="grid grid-cols-2 gap-3">
+                            <div class="bg-black/30 p-3 rounded-lg border border-white/5 flex flex-col items-center justify-center text-center">
+                                <button onclick="document.getElementById('fotoInput1').click()" class="w-10 h-10 bg-red-600 text-white rounded-lg hover:bg-red-700 transition flex items-center justify-center shadow-lg">
+                                    <i class="fas fa-camera text-sm"></i>
                                 </button>
-                                <div id="previewContainer" class="hidden">
-                                    <img id="imgPreview" class="w-14 h-14 object-cover rounded border-2 border-red-600">
-                                </div>
-                                <div>
-                                    <p class="text-xs font-black uppercase text-white">BUKA KAMERA</p>
-                                    <p id="statusFoto" class="text-[12px] text-slate-600 uppercase font-bold">AMBIL GAMBAR</p>
-                                </div>
+                                <img id="imgPreview1" class="hidden w-16 h-12 object-cover rounded mt-2 border border-red-500">
+                                <p id="statusFoto1" class="text-[10px] text-slate-500 font-medium mt-1 uppercase">Foto 1</p>
+                                <input type="file" id="fotoInput1" accept="image/*" capture="environment" class="hidden" onchange="previewFotoDua(event, 1)">
                             </div>
-                            <input type="file" id="fotoInput" accept="image/*" capture="environment" class="hidden" onchange="previewFoto(event)">
+
+                            <div class="bg-black/30 p-3 rounded-lg border border-white/5 flex flex-col items-center justify-center text-center">
+                                <button onclick="document.getElementById('fotoInput2').click()" class="w-10 h-10 bg-slate-700 text-white rounded-lg hover:bg-slate-600 transition flex items-center justify-center shadow-lg">
+                                    <i class="fas fa-camera text-sm"></i>
+                                </button>
+                                <img id="imgPreview2" class="hidden w-16 h-12 object-cover rounded mt-2 border border-red-500">
+                                <p id="statusFoto2" class="text-[10px] text-slate-500 font-medium mt-1 uppercase">Foto 2</p>
+                                <input type="file" id="fotoInput2" accept="image/*" capture="environment" class="hidden" onchange="previewFotoDua(event, 2)">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -267,8 +278,8 @@
             </div>
 
             <!-- Security Footer -->
-            <div class="bg-red-600/5 p-4 text-center border-t border-[#2a2a30]">
-                <p class="text-[8px] text-slate-600 uppercase tracking-[0.8em] font-black">Security Protocol // Latobe Tactical Systems</p>
+            <div class="bg-[#080b11]/80 p-3.5 text-center border-t border-white/5">
+                <p class="mono text-[9px] text-slate-500 uppercase tracking-widest">Security Protocol // Latobe Tactical Systems</p>
             </div>
         </div>
     </div>
@@ -276,16 +287,20 @@
     <script>
         const { jsPDF } = window.jspdf;
 
-        // UI Handlers
-        function previewFoto(event) {
+        // UI Handlers untuk 2 Foto
+        function previewFotoDua(event, index) {
             const file = event.target.files[0];
             if (file) {
                 const reader = new FileReader();
                 reader.onload = function(e) {
-                    document.getElementById('imgPreview').src = e.target.result;
-                    document.getElementById('previewContainer').classList.remove('hidden');
-                    document.getElementById('statusFoto').innerText = "Intel Captured";
-                    document.getElementById('statusFoto').className = "text-[10px] text-red-500 font-black uppercase";
+                    const imgEl = document.getElementById(`imgPreview${index}`);
+                    const statusEl = document.getElementById(`statusFoto${index}`);
+                    
+                    imgEl.src = e.target.result;
+                    imgEl.classList.remove('hidden');
+                    
+                    statusEl.innerText = `Foto ${index} Captured`;
+                    statusEl.className = "text-[10px] text-red-400 font-semibold mt-1 uppercase";
                 }
                 reader.readAsDataURL(file);
             }
@@ -321,7 +336,7 @@
 
             if(!nama) { alert("ERROR: INPUT OPERATOR ID!"); return; }
 
-             const pesan = `*LAPORAN SI-KOBAR LATOBE*%0A` +
+            const pesan = `*LAPORAN SI-KOBAR LATOBE*%0A` +
                           `------------------------------------%0A` +
                           `🛡️ *Regu Pengamanan :* ${rupam}%0A` +
                           `👤 *Nama Petugas :* ${nama}%0A` +
@@ -329,21 +344,17 @@
                           `👥 *Jumlah WBP :* ${jumlahWbp}%0A` +
                           `📅 *Tanggal :* ${tgl}%0A` +
                           `⏰ *Waktu :* ${jam}%0A` +
-                          `🌎 *Titik GPS :* %0Ahttps://www.google.com/maps?q=${lokasi}%0A` +
+                          `🌎 *Titik GPS :* %0Ahttp://maps.google.com/?q=${lokasi}%0A` +
                           `------------------------------------%0A` +
                           `📝 *Kondisi :* ${catatan}%0A` +
                           `------------------------------------%0A` +
                           `_Dikirim melalui Sistem Digital Lapas Tobelo_`;
 
-            // SOLUSI UNTUK GRUP: 
-            // Menggunakan 'api.whatsapp.com/send' tanpa nomor tujuan agar browser/aplikasi 
-            // meminta pengguna memilih tujuan (kontak/grup) secara manual.
             const urlGrup = `https://api.whatsapp.com/send?text=${pesan}`;
-
             window.open(urlGrup, '_blank');
         }
 
-       function buatPDF() {
+        function buatPDF() {
             const nama = document.getElementById('nama').value;
             const rupam = document.getElementById('rupam').value;
             const area = document.getElementById('area').value;
@@ -353,13 +364,8 @@
             const tgl = document.getElementById('txt-tgl').innerText;
             const lokasi = document.getElementById('txt-lokasi').innerText;
 
-            // DATA KEPALA LAPAS (Silakan sesuaikan Nama dan NIP)
-            const namaKalapas = "DONNI ISA DERMAWAN,A.Md.IP.,S.H.<M.Si>"; 
+            const namaKalapas = "DONNI ISA DERMAWAN,A.Md.IP.,S.H.M.Si"; 
             const nipKalapas = "198005162000121001";
-            
-            // Ambil elemen foto preview
-            const imgPreview = document.getElementById('imgPreview');
-            const hasImage = !imgPreview.classList.contains('hidden') && imgPreview.src;
 
             if (!nama) { 
                 alert("ACCESS DENIED: Masukkan Nama Petugas untuk otentikasi PDF!"); 
@@ -377,13 +383,14 @@
             doc.rect(7, 7, pageWidth - 14, pageHeight - 14);
 
             // --- 2. HEADER ---
-            doc.setFillColor(0, 0, 0);
+            doc.setFillColor(15, 23, 42);
             doc.rect(7, 7, pageWidth - 14, 35, 'F');
             doc.setTextColor(255, 255, 255);
-            doc.setFontSize(20);
-            doc.text("ATENSI PIMPINAN", pageWidth / 2, 22, { align: "center" });
-            doc.setFontSize(16);
-            doc.text("KONTROK KELILING BARCODE LAPAS KELAS IIB TOBELO", pageWidth / 2, 30, { align: "center" });
+            doc.setFont("helvetica", "bold");
+            doc.setFontSize(18);
+            doc.text("ATENSI PIMPINAN", pageWidth / 2, 21, { align: "center" });
+            doc.setFontSize(13);
+            doc.text("SISTEM KONTROL KELILING BARCODE LAPAS KELAS IIB TOBELO", pageWidth / 2, 31, { align: "center" });
 
             // --- 3. BODY DATA ---
             doc.setTextColor(0, 0, 0);
@@ -394,12 +401,12 @@
 
             const addRow = (label, value) => {
                 doc.setFont("helvetica", "bold");
-                doc.setFillColor(245, 245, 245);
+                doc.setFillColor(248, 250, 252);
                 doc.rect(startX - 2, y - 5, 175, 8, 'F');
                 doc.text(label.toUpperCase(), startX, y);
                 doc.setFont("helvetica", "normal");
                 doc.text(":  " + value, colX, y);
-                y += 12;
+                y += 11;
             };
 
             addRow("Regu Pengamanan", rupam);
@@ -410,70 +417,101 @@
             addRow("Tanggal Laporan", tgl);
             addRow("Koordinat GPS", lokasi);
 
-            // --- 4. HASIL PANTAUAN (TEXT) ---
-            y += 5;
+            // --- 4. HASIL PANTAUAN ---
+            y += 4;
             doc.setFont("helvetica", "bold");
             doc.setFillColor(185, 28, 28);
             doc.rect(startX - 2, y - 5, 45, 8, 'F');
             doc.setTextColor(255, 255, 255);
             doc.text("HASIL PANTAUAN", startX, y);
 
-            y += 10;
-            doc.setTextColor(0, 0, 0);
+            y += 9;
+            doc.setTextColor(30, 41, 59);
             doc.setFont("helvetica", "italic");
             const splitCatatan = doc.splitTextToSize(catatan, 160);
             doc.text(splitCatatan, startX, y);
             y += (splitCatatan.length * 7) + 10;
 
-            // --- 5. LAMPIRAN FOTO (VISUAL EVIDENCE) ---
-            if (hasImage) {
+            // --- 5. LAMPIRAN FOTO (2 FOTO BERDAMPINGAN) ---
+            const img1 = document.getElementById('imgPreview1');
+            const img2 = document.getElementById('imgPreview2');
+            const hasImg1 = img1 && !img1.classList.contains('hidden') && img1.src;
+            const hasImg2 = img2 && !img2.classList.contains('hidden') && img2.src;
+
+            if (hasImg1 || hasImg2) {
                 try {
-                    // Label Foto
                     doc.setFont("helvetica", "bold");
                     doc.setTextColor(185, 28, 28);
-                    doc.text("DOKUMENTASI:", startX, y);
-                    y += 5;
-                    
-                    // Tambahkan Gambar (Format: src_data, tipe, x, y, width, height)
-                    // Ukuran diset 80mm x 60mm agar proporsional
-                    doc.addImage(imgPreview.src, 'JPEG', startX, y, 80, 60);
+                    doc.text("DOKUMENTASI", pageWidth / 2, y, { align: "center" });
+                    y += 6;
+
+                    const imgWidth = 75;  
+                    const imgHeight = 55; 
+                    const gap = 8;        
+
+                    if (hasImg1 && hasImg2) {
+                        const totalWidth = (imgWidth * 2) + gap;
+                        const startXPhotos = (pageWidth - totalWidth) / 2;
+
+                        doc.addImage(img1.src, 'JPEG', startXPhotos, y, imgWidth, imgHeight);
+                        doc.addImage(img2.src, 'JPEG', startXPhotos + imgWidth + gap, y, imgWidth, imgHeight);
+                    } else if (hasImg1) {
+                        const imgX = (pageWidth - imgWidth) / 2;
+                        doc.addImage(img1.src, 'JPEG', imgX, y, imgWidth, imgHeight);
+                    } else if (hasImg2) {
+                        const imgX = (pageWidth - imgWidth) / 2;
+                        doc.addImage(img2.src, 'JPEG', imgX, y, imgWidth, imgHeight);
+                    }
+
+                    y += imgHeight + 12; 
                 } catch (e) {
                     console.error("Gagal menambahkan gambar ke PDF:", e);
                 }
             } else {
-                doc.setFontSize(8);
-                doc.setTextColor(150, 150, 150);
-                doc.text("* Tidak ada lampiran foto.", startX, y);
+                doc.setFontSize(9);
+                doc.setTextColor(148, 163, 184);
+                doc.text("* Tidak ada lampiran bukti foto.", pageWidth / 2, y, { align: "center" });
+                y += 15;
             }
 
-            const signX = pageWidth - 90; // Posisi di sisi kanan
-            doc.setTextColor(0, 0, 0);
-            doc.setFont("helvetica", "normal");
-            doc.text("Mengetahui,", signX, y);
-            y += 5;
-            doc.text("Kepala Lapas Tobelo,", signX, y);
+            // Tanda tangan dinamis
+            let signY = y;
+            if (signY > pageHeight - 60) { 
+                doc.addPage();
+                signY = 30;
+                doc.setDrawColor(185, 28, 28);
+                doc.setLineWidth(1);
+                doc.rect(5, 5, pageWidth - 10, pageHeight - 10);
+                doc.rect(7, 7, pageWidth - 14, pageHeight - 14);
+            }
 
-            y += 25; // Ruang tanda tangan
+            const signX = pageWidth - 90; 
+            doc.setTextColor(15, 23, 42);
+            doc.setFont("helvetica", "normal");
+            doc.setFontSize(10);
+            doc.text("Mengetahui,", signX, signY);
+            signY += 5;
+            doc.text("Kepala Lapas Tobelo,", signX, signY);
+
+            signY += 25; 
             doc.setFont("helvetica", "bold");
-            doc.text(namaKalapas, signX, y);
+            doc.text(namaKalapas, signX, signY);
 
-            // Garis bawah nama
-             doc.setLineWidth(0.5);
-            doc.line(signX, y + 1, signX + 65, y + 1);
+            doc.setLineWidth(0.5);
+            doc.setDrawColor(15, 23, 42);
+            doc.line(signX, signY + 1, signX + 65, signY + 1);
     
-             y += 6;
+            signY += 6;
             doc.setFont("helvetica", "normal");
-            doc.text("NIP. " + nipKalapas, signX, y);
+            doc.text("NIP. " + nipKalapas, signX, signY);
 
             // --- 6. FOOTER ---
-            const footerY = pageHeight - 20;
-            doc.setFontSize(7);
-            doc.setTextColor(100, 100, 100);
-            doc.text("Digital Signature: SI-KOBAR-DALOHA-TACTICAL-SYSTEM", pageWidth / 2, footerY, { align: "center" });
+            doc.setFontSize(8);
+            doc.setTextColor(148, 163, 184);
+            doc.text("Digital Signature: SI-KOBAR-DALOHA-TACTICAL-SYSTEM", pageWidth / 2, pageHeight - 15, { align: "center" });
 
             const cleanName = nama.replace(/\s+/g, '_').toUpperCase();
             doc.save(`LAPORAN_OPS_${cleanName}.pdf`);
-            alert("SYSTEM: PDF dengan lampiran foto telah berhasil dibuat.");
         }
     </script>
 </body>
